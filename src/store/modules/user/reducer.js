@@ -7,8 +7,7 @@ const INITIAL_STATE = {
 export default function user(state = INITIAL_STATE, action) {
     return produce(state, draft => {
         switch (action.type) {
-            case '@user/SIGN_IN_SUCCESS': {
-                console.tron.log('action', action);
+            case '@auth/SIGN_IN_SUCCESS': {
                 draft.profile = action.payload.user;
                 break;
             }
@@ -16,7 +15,7 @@ export default function user(state = INITIAL_STATE, action) {
                 draft.profile = action.payload.profile;
                 break;
             }
-            case 'auth/SIGN_OUT': {
+            case '@auth/SIGN_OUT': {
                 draft.profile = null;
                 break;
             }

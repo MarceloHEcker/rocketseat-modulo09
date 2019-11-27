@@ -18,7 +18,7 @@ export default function Notifications() {
     const [notifications, setNotifications] = useState([]);
 
     const hasUnread = useMemo(
-        () => !!notifications.find(notification => notification.read === false),
+        () => notifications.some(notification => notification.read === false),
         [notifications]
     );
 
@@ -67,7 +67,7 @@ export default function Notifications() {
                 <Scroll>
                     {notifications.map(notification => (
                         <Notification
-                            key={notification.__id}
+                            key={notification._id}
                             unread={!notification.read}
                         >
                             <p>{notification.content}</p>

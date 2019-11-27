@@ -8,9 +8,6 @@ import logo from '~/assets/logo-purple.svg';
 
 export default function Header() {
     const profile = useSelector(state => state.user.profile);
-
-    console.tron.log('state', useSelector(state => state.user));
-
     return (
         <Container>
             <Content>
@@ -24,12 +21,12 @@ export default function Header() {
 
                     <Profile>
                         <div>
-                            <strong>{profile.name}</strong>
+                            <strong>{profile ? profile.name : ''}</strong>
                             <Link to="/profile">Meu perfil</Link>
                         </div>
                         <img
                             src={
-                                profile.avatar.url ||
+                                (profile.avatar && profile.avatar.url) ||
                                 'https://api.adorable.io/avatars/50/abott@adorable.png'
                             }
                             alt="Marcelo Ecker"
